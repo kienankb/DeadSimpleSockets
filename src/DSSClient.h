@@ -1,0 +1,4 @@
+class DSSClient {
+public:
+private:
+};
