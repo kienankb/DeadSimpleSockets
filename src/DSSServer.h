@@ -1,3 +1,6 @@
+#include <sys/socket.h>
+#include <netinet/in.h>
+
 class DSSServer {
 public:
 private:
