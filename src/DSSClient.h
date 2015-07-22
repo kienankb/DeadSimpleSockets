@@ -3,8 +3,8 @@
 
 class DSSClient {
 public:
-	DSSClient::DSSClient();
-	DSSClient::DSSClient(char* address, unsigned short port);
+	DSSClient();
+	DSSClient(char* address, unsigned short port);	
 private:
 	int mSocket;
 	int mBufferSize;
