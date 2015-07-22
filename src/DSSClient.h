@@ -4,7 +4,14 @@
 class DSSClient {
 public:
 	DSSClient();
-	DSSClient(char* address, unsigned short port);	
+	DSSClient(char* address, unsigned short port);
+	int getSocket() { return mSocket; }
+	int getBufferSize() { return mBufferSize; }
+	char* getAddress() { return mAddress; }
+	unsigned short getPort() { return mPort; }
+	int getDomain() { return mDomain; }
+	int getType() { return mType; }
+	int getProtocol() { return mProtocol; }
 private:
 	int mSocket;
 	int mBufferSize;
