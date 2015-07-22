@@ -6,7 +6,6 @@
 DSSClient::DSSClient() {
 	mSocket = 0;
 	mBufferSize = 0;
-	mAddress = NULL;
 	mPort = 0;
 	mDomain = 0;
 	mType = 0;
@@ -17,7 +16,7 @@ DSSClient::DSSClient() {
 // Simplest constructor; takes in an address and a port, but
 // otherwise defaults to internet, TCP, and some others
 //
-DSSClient::DSSClient(char* address, unsigned short port) {
+DSSClient::DSSClient(std::string address, unsigned short port) {
 	mAddress = address;
 	mPort = port;
 	mDomain = AF_INET;

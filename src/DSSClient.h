@@ -7,7 +7,7 @@ public:
 	DSSClient(char* address, unsigned short port);
 	int getSocket() { return mSocket; }
 	int getBufferSize() { return mBufferSize; }
-	char* getAddress() { return mAddress; }
+	std::string getAddress() { return mAddress; }
 	unsigned short getPort() { return mPort; }
 	int getDomain() { return mDomain; }
 	int getType() { return mType; }
@@ -15,7 +15,7 @@ public:
 private:
 	int mSocket;
 	int mBufferSize;
-	char* mAddress;
+	std::string mAddress;
 	unsigned short mPort;
 	struct sockaddr_in mServerAddr;
 	int mDomain;
