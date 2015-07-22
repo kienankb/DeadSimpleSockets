@@ -24,3 +24,19 @@ DSSClient::DSSClient(std::string address, unsigned short port) {
 	mProtocol = 0;
 	mBufferSize = 1024;
 }
+
+int DSSClient::connect() {
+	mSocket = socket(mDomain, mType, mProtocol);
+	if (mSocket < 0) {
+		return -1;
+	}
+	mServerAddr.sin_family = mDomain;
+	mServerAddr.sin_port = htons(mPort);
+	mServerAddr.sin_addr.s_addr = inet_addr(mAddress);
+	memset(mServerAddr.sin_zero, "\0", sizeof mServerAddr.sin_zero);
+	int connectVal = connect(mSocket, (struct sockaddr*)&mServerAddr, sizeof mServerAddr);
+	if (connectVal < 0) {
+		return -1;
+	}
+	return 0;
+}

@@ -3,8 +3,11 @@
 
 class DSSClient {
 public:
+	// Constructors
 	DSSClient();
 	DSSClient(char* address, unsigned short port);
+
+	// Get/sets
 	int getSocket() { return mSocket; }
 	int getBufferSize() { return mBufferSize; }
 	std::string getAddress() { return mAddress; }
@@ -18,6 +21,10 @@ public:
 	void setDomain(int domain) { mDomain = domain; }
 	void setType(int type) { mType = type; }
 	void setProtocol(int protocol) { mProtocol = protocol; }
+
+	// Connection
+	int connect();
+	
 private:
 	int mSocket;
 	int mBufferSize;
