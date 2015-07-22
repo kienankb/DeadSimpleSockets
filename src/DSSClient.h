@@ -12,6 +12,12 @@ public:
 	int getDomain() { return mDomain; }
 	int getType() { return mType; }
 	int getProtocol() { return mProtocol; }
+	void setBufferSize(int bufferSize) { mBufferSize = bufferSize; }
+	void setAddress(std::string address) { mAddress = address; }
+	void setPort(unsigned short port) { mPort = port; }
+	void setDomain(int domain) { mDomain = domain; }
+	void setType(int type) { mType = type; }
+	void setProtocol(int protocol) { mProtocol = protocol; }
 private:
 	int mSocket;
 	int mBufferSize;
