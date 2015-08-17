@@ -30,7 +30,7 @@ DSSClient::DSSClient(std::string address, unsigned short port) {
 	mBufferSize = 1024;
 }
 
-int DSSClient::initialize() {
+int DSSClient::Connect() {
 	mSocket = socket(mDomain, mType, mProtocol);
 	if (mSocket < 0) {
 		return -1;
@@ -44,4 +44,10 @@ int DSSClient::initialize() {
 		return -1;
 	}
 	return 0;
+}
+
+int DSSClient::Send(std::string data)
+{
+	int bytesSent = send(mSocket, data.c_str(), data.length() + 1, 0);
+	return bytesSent;
 }

@@ -23,8 +23,9 @@ public:
 	void setType(int type) { mType = type; }
 	void setProtocol(int protocol) { mProtocol = protocol; }
 
-	// Connection
-	int initialize();
+	// Connection and usage
+	int Connect();
+	int Send(std::string data);
 
 private:
 	int mSocket;
