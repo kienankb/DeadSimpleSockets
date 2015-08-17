@@ -1,11 +1,12 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <string>
 
 class DSSClient {
 public:
 	// Constructors
 	DSSClient();
-	DSSClient(char* address, unsigned short port);
+	DSSClient(std::string address, unsigned short port);
 
 	// Get/sets
 	int getSocket() { return mSocket; }
@@ -23,8 +24,8 @@ public:
 	void setProtocol(int protocol) { mProtocol = protocol; }
 
 	// Connection
-	int connect();
-	
+	int initialize();
+
 private:
 	int mSocket;
 	int mBufferSize;

@@ -1,4 +1,9 @@
 #include "DSSClient.h"
+#include <string>
+#include <string.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 
 //
 // Default constructor, we'll zero everything out
@@ -25,15 +30,15 @@ DSSClient::DSSClient(std::string address, unsigned short port) {
 	mBufferSize = 1024;
 }
 
-int DSSClient::connect() {
+int DSSClient::initialize() {
 	mSocket = socket(mDomain, mType, mProtocol);
 	if (mSocket < 0) {
 		return -1;
 	}
 	mServerAddr.sin_family = mDomain;
 	mServerAddr.sin_port = htons(mPort);
-	mServerAddr.sin_addr.s_addr = inet_addr(mAddress);
-	memset(mServerAddr.sin_zero, "\0", sizeof mServerAddr.sin_zero);
+	mServerAddr.sin_addr.s_addr = inet_addr(mAddress.c_str());
+	memset(&mServerAddr.sin_zero, 0, sizeof(mServerAddr.sin_zero));
 	int connectVal = connect(mSocket, (struct sockaddr*)&mServerAddr, sizeof mServerAddr);
 	if (connectVal < 0) {
 		return -1;
