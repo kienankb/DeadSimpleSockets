@@ -5,9 +5,6 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-//
-// Default constructor, we'll zero everything out
-//
 DSSClient::DSSClient() {
 	mSocket = 0;
 	mBufferSize = 0;
@@ -17,10 +14,8 @@ DSSClient::DSSClient() {
 	mProtocol = 0;
 }
 
-//
-// Simplest constructor; takes in an address and a port, but
-// otherwise defaults to internet, TCP, and some others
-//
+// Constructor takes in an address and a port, but
+// otherwise defaults to internet, TCP, and some other options
 DSSClient::DSSClient(std::string address, unsigned short port) {
 	mAddress = address;
 	mPort = port;
@@ -30,7 +25,7 @@ DSSClient::DSSClient(std::string address, unsigned short port) {
 	mBufferSize = 1024;
 }
 
-int DSSClient::Connect() {
+int DSSClient::connect() {
 	mSocket = socket(mDomain, mType, mProtocol);
 	if (mSocket < 0) {
 		return -1;
@@ -46,7 +41,7 @@ int DSSClient::Connect() {
 	return 0;
 }
 
-int DSSClient::Send(std::string data)
+int DSSClient::send(std::string data)
 {
 	int bytesSent = send(mSocket, data.c_str(), data.length() + 1, 0);
 	return bytesSent;

@@ -8,7 +8,7 @@ public:
 	DSSClient();
 	DSSClient(std::string address, unsigned short port);
 
-	// Get/sets
+	// Accessors, mutators
 	int getSocket() { return mSocket; }
 	int getBufferSize() { return mBufferSize; }
 	std::string getAddress() { return mAddress; }
@@ -23,9 +23,9 @@ public:
 	void setType(int type) { mType = type; }
 	void setProtocol(int protocol) { mProtocol = protocol; }
 
-	// Connection and usage
-	int Connect();
-	int Send(std::string data);
+	// General usage
+	int connect();
+	int send(std::string data);
 
 private:
 	int mSocket;
